@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vipin M | Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#080808;color:#e8e0d0;font-family:'Inter',sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.sidebar{width:220px;background:#0a0a0a;border-right:1px solid #181818;display:flex;flex-direction:column;padding:44px 28px;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}
+.logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:2px;color:#e8e0d0;line-height:1.2;margin-bottom:5px}
+.logo em{font-style:italic;color:#c9a84c}
+.tagline{font-size:9px;color:#3a3a3a;letter-spacing:3px;text-transform:uppercase;margin-bottom:44px}
+nav{display:flex;flex-direction:column;gap:2px;flex:1}
+nav a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#4a4a4a;padding:10px 0;border-bottom:1px solid transparent;transition:all 0.3s;cursor:pointer;user-select:none}
+nav a:hover,nav a.active{color:#e8e0d0;border-bottom-color:#c9a84c}
+.sidebar-social{margin-top:auto;padding-top:28px}
+.sidebar-social a{font-size:9px;color:#2a2a2a;letter-spacing:2px;text-transform:uppercase;transition:color 0.3s;display:block;margin-bottom:8px}
+.sidebar-social a:hover{color:#c9a84c}
+.copy{font-size:9px;color:#1e1e1e;margin-top:16px;letter-spacing:1px}
+.main{margin-left:220px;min-height:100vh}
+section{display:none}
+section.active{display:block}
+
+/* HOME */
+.hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0;background:url('theyyam8.jpg') center/cover no-repeat;filter:brightness(0.45)}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(to top,#080808 0%,rgba(8,8,8,0.3) 50%,transparent 100%)}
+.hero-content{position:relative;z-index:1;padding:56px 60px;width:100%}
+.hero-eyebrow{font-size:10px;color:#c9a84c;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:76px;font-weight:300;line-height:.9;color:#fff;margin-bottom:14px}
+.hero-name em{font-style:italic;color:#c9a84c;display:block}
+.hero-role{font-size:11px;color:#666;letter-spacing:3px;text-transform:uppercase;margin-bottom:32px}
+.hero-desc{font-size:13px;color:#777;line-height:1.85;max-width:380px;margin-bottom:36px}
+.hero-btn{display:inline-block;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c9a84c;border:1px solid rgba(201,168,76,0.5);padding:11px 26px;transition:all .3s;cursor:pointer}
+.hero-btn:hover{background:#c9a84c;color:#080808;border-color:#c9a84c}
+.cat-section{padding:72px 60px}
+.row-label{font-size:9px;color:#333;letter-spacing:4px;text-transform:uppercase;margin-bottom:36px;display:flex;align-items:center;gap:18px}
+.row-label::after{content:'';flex:1;height:1px;background:#141414}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.cat-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:2/3}
+.cat-card:nth-child(2){margin-top:-40px}
+.cat-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease,filter .5s ease;filter:brightness(.55)}
+.cat-card:hover img{transform:scale(1.05);filter:brightness(.35)}
+.cat-info{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(to top,rgba(0,0,0,.85),transparent)}
+.cat-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-style:italic}
+.cat-sub{font-size:9px;color:#888;letter-spacing:2px;text-transform:uppercase;margin-top:3px}
+
+/* GALLERY */
+.gallery-wrap{padding:56px 60px}
+.pg-header{margin-bottom:44px}
+.pg-header h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:#e8e0d0;margin-bottom:5px}
+.pg-header p{font-size:10px;color:#333;letter-spacing:3px;text-transform:uppercase}
+.filter-row{display:flex;gap:28px;margin-bottom:44px;border-bottom:1px solid #141414;padding-bottom:14px;flex-wrap:wrap}
+.fbtn{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#3a3a3a;background:none;border:none;cursor:pointer;padding:4px 0;position:relative;transition:color .3s}
+.fbtn:hover,.fbtn.on{color:#c9a84c}
+.fbtn.on::after{content:'';position:absolute;bottom:-15px;left:0;right:0;height:1px;background:#c9a84c}
+.masonry{columns:2;gap:6px}
+.m-item{break-inside:avoid;margin-bottom:6px;position:relative;overflow:hidden;cursor:pointer}
+.m-item img{width:100%;display:block;transition:transform .5s ease,filter .4s ease;filter:brightness(.82)}
+.m-item:hover img{transform:scale(1.04);filter:brightness(1)}
+.m-cap{position:absolute;bottom:0;left:0;right:0;padding:14px;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);opacity:0;transition:opacity .35s}
+.m-item:hover .m-cap{opacity:1}
+.m-cap span{font-size:10px;color:#e8e0d0;letter-spacing:2px;text-transform:uppercase}
+.m-item.hide{display:none}
+
+/* ABOUT */
+.about-wrap{padding:56px 60px}
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start}
+.about-img-wrap{position:relative}
+.about-img-wrap img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;filter:brightness(.85)}
+.about-img-label{position:absolute;bottom:16px;right:16px;font-size:9px;color:#c9a84c;letter-spacing:2px;text-transform:uppercase;background:rgba(8,8,8,.8);padding:5px 10px}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:300;color:#e8e0d0;margin-bottom:4px}
+.about-text h2 em{font-style:italic;color:#c9a84c}
+.about-role{font-size:9px;color:#3a3a3a;letter-spacing:3px;text-transform:uppercase;margin-bottom:28px}
+.about-bio{font-size:13px;color:#777;line-height:1.9;margin-bottom:28px}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:24px 0;border-top:1px solid #141414;border-bottom:1px solid #141414;margin-bottom:36px}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:34px;color:#c9a84c;font-weight:300}
+.stat-l{font-size:9px;color:#333;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:9px;color:#555;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border:1px solid #1e1e1e}
+
+/* SERVICES */
+.svc-wrap{padding:56px 60px}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:12px}
+.svc-card{background:#0a0a0a;padding:36px;border:1px solid #141414;transition:border-color .3s}
+.svc-card:hover{border-color:#242424}
+.svc-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:#e8e0d0;margin-bottom:10px;font-style:italic}
+.svc-desc{font-size:12px;color:#4a4a4a;line-height:1.75;margin-bottom:18px}
+.svc-price{font-size:10px;color:#c9a84c;letter-spacing:2px;text-transform:uppercase}
+
+/* CONTACT */
+.contact-wrap{padding:56px 60px}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start;margin-top:12px}
+.contact-info h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:#e8e0d0;margin-bottom:14px}
+.contact-info p{font-size:13px;color:#555;line-height:1.85;margin-bottom:28px}
+.c-details{display:flex;flex-direction:column;gap:14px}
+.c-item label{font-size:9px;color:#333;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:3px}
+.c-item span{font-size:13px;color:#666}
+.cform{display:flex;flex-direction:column;gap:14px}
+.fg label{font-size:9px;color:#333;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:7px}
+.fg input,.fg textarea{width:100%;background:#0a0a0a;border:1px solid #141414;color:#e8e0d0;padding:12px;font-size:12px;font-family:'Inter',sans-serif;outline:none;transition:border-color .3s}
+.fg input:focus,.fg textarea:focus{border-color:#2a2a2a}
+.fg textarea{height:110px;resize:none}
+.submit{background:transparent;border:1px solid rgba(201,168,76,.4);color:#c9a84c;padding:12px 28px;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;align-self:flex-start}
+.submit:hover{background:#c9a84c;color:#080808;border-color:#c9a84c}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:999;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb img{max-width:90vw;max-height:90vh;object-fit:contain}
+.lb-close{position:absolute;top:20px;right:28px;font-size:28px;color:#555;cursor:pointer;line-height:1;transition:color .2s}
+.lb-close:hover{color:#fff}
+
+@media(max-width:768px){
+  .sidebar{width:100%;height:auto;position:relative;padding:20px;flex-direction:row;flex-wrap:wrap}
+  .main{margin-left:0}
+  .logo,.tagline{width:100%}
+  .tagline{margin-bottom:8px}
+  nav{flex-direction:row;flex-wrap:wrap;gap:0}
+  nav a{padding:6px 8px;font-size:10px;border-bottom:none}
+  .sidebar-social{flex-direction:row;margin-top:4px;padding-top:4px;display:flex;gap:12px}
+  .copy{display:none}
+  .hero-name{font-size:42px}
+  .hero-content,.cat-section,.gallery-wrap,.about-wrap,.svc-wrap,.contact-wrap{padding:28px 20px}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .cat-card:nth-child(2){margin-top:0}
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo"><em>Vipin</em> M</div>
+  <div class="tagline">Photography</div>
+  <nav>
+    <a class="active" onclick="go('home',this)">Home</a>
+    <a onclick="go('gallery',this)">Gallery</a>
+    <a onclick="go('about',this)">About</a>
+    <a onclick="go('services',this)">Services</a>
+    <a onclick="go('contact',this)">Contact</a>
+  </nav>
+  <div class="sidebar-social">
+    <a href="https://www.instagram.com/vipin__v1/" target="_blank">Instagram</a>
+  </div>
+  <div class="copy">© 2026 Vipin M Photography</div>
+</aside>
+
+<main class="main">
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grad"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Visual Storyteller · Kerala</div>
+      <div class="hero-name"><em>Vipin M</em> </div>
+      <div class="hero-role"> .......Canonr6markⅱ........</div>
+      <div class="hero-desc">Capturing the raw spirit of Kerala — from the fire of Theyyam to the grandeur of temple festivals. Every frame tells a story that words cannot.</div>
+      <div class="hero-btn" onclick="go('gallery',document.querySelectorAll('nav a')[1])">View Gallery →</div>
+    </div>
+  </div>
+  <div class="cat-section">
+    <div class="row-label">Specialties</div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="filterAndGo('theyyam')">
+        <img src="theyyam2.jpg" alt="Theyyam">
+        <div class="cat-info"><div class="cat-name">Theyyam</div><div class="cat-sub">Ritual & Fire</div></div>
+      </div>
+      <div class="cat-card" onclick="filterAndGo('festival')">
+        <img src="festival3.jpg" alt="Festival">
+        <div class="cat-info"><div class="cat-name">Festival</div><div class="cat-sub">Culture & Celebration</div></div>
+      </div>
+      <div class="cat-card" onclick="filterAndGo('portrait')">
+        <img src="portrait1.jpg" alt="Portrait">
+        <div class="cat-info"><div class="cat-name">Portrait</div><div class="cat-sub">Face & Form</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-wrap">
+    <div class="pg-header">
+      <h2>Gallery</h2>
+      <p>Selected Works · 2024–2026</p>
+    </div>
+    <div class="filter-row">
+      <button class="fbtn on" onclick="filter('all',this)">All</button>
+      <button class="fbtn" onclick="filter('theyyam',this)">Theyyam</button>
+      <button class="fbtn" onclick="filter('festival',this)">Festival</button>
+      <button class="fbtn" onclick="filter('portrait',this)">Portrait</button>
+    </div>
+    <div class="masonry">
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam8.jpg" alt=""><div class="m-cap"><span>Theyyam · Fire</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam7.jpg" alt=""><div class="m-cap"><span>Theyyam · Jump</span></div></div>
+      <div class="m-item" data-cat="festival" onclick="lb(this)"><img src="festival3.jpg" alt=""><div class="m-cap"><span>Festival · Drums</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam1.jpg" alt=""><div class="m-cap"><span>Theyyam · Night Fire</span></div></div>
+      <div class="m-item" data-cat="portrait" onclick="lb(this)"><img src="portrait1.jpg" alt=""><div class="m-cap"><span>Portrait · Yakshi</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam2.jpg" alt=""><div class="m-cap"><span>Theyyam · Closeup</span></div></div>
+      <div class="m-item" data-cat="festival" onclick="lb(this)"><img src="festival4.jpg" alt=""><div class="m-cap"><span>Festival · Crowd</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam3.jpg" alt=""><div class="m-cap"><span>Theyyam · Flame</span></div></div>
+      <div class="m-item" data-cat="portrait" onclick="lb(this)"><img src="portrait2.jpg" alt=""><div class="m-cap"><span>Portrait · Devi</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam4.jpg" alt=""><div class="m-cap"><span>Theyyam · Gold</span></div></div>
+      <div class="m-item" data-cat="festival" onclick="lb(this)"><img src="festival1.jpg" alt=""><div class="m-cap"><span>Festival · Elephant</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam5.jpg" alt=""><div class="m-cap"><span>Theyyam · B&W</span></div></div>
+      <div class="m-item" data-cat="festival" onclick="lb(this)"><img src="festival2.jpg" alt=""><div class="m-cap"><span>Festival · Procession</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam6.jpg" alt=""><div class="m-cap"><span>Theyyam · Monochrome</span></div></div>
+      <div class="m-item" data-cat="festival" onclick="lb(this)"><img src="festival5.jpg" alt=""><div class="m-cap"><span>Festival · Grand</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam9.jpg" alt=""><div class="m-cap"><span>Theyyam · Crowd</span></div></div>
+      <div class="m-item" data-cat="festival" onclick="lb(this)"><img src="festival6.jpg" alt=""><div class="m-cap"><span>Festival · City</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam10.jpg" alt=""><div class="m-cap"><span>Theyyam · Amber</span></div></div>
+      <div class="m-item" data-cat="festival" onclick="lb(this)"><img src="festival7.jpg" alt=""><div class="m-cap"><span>Festival · Street</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam11.jpg" alt=""><div class="m-cap"><span>Theyyam · Sparks</span></div></div>
+      <div class="m-item" data-cat="theyyam" onclick="lb(this)"><img src="theyyam12.jpg" alt=""><div class="m-cap"><span>Theyyam · Ritual</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="pg-header" style="margin-bottom:52px"><h2>About</h2><p>The Person Behind The Lens</p></div>
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="theyyam2.jpg" alt="Vipin M">
+        <div class="about-img-label">Vipin M · Photographer</div>
+      </div>
+      <div class="about-text">
+        <h2><em>Vipin</em> M</h2>
+        <div class="about-role">Documentary Photographer · Kerala, India</div>
+        <div class="about-bio">
+          I am a self-taught photographer from Kerala with a deep passion for documenting the cultural soul of my homeland. My lens is drawn to the raw, the real, and the ritualistic — particularly the ancient art of Theyyam and the vibrant energy of temple festivals.<br><br>
+          Photography, for me, is not just about capturing a moment — it is about preserving a feeling, a tradition, a story that might otherwise fade into silence.
+        </div>
+        <div class="stats-row">
+          <div><div class="stat-n">3+</div><div class="stat-l">Years Active</div></div>
+          <div><div class="stat-n">20+</div><div class="stat-l">Projects</div></div>
+          <div><div class="stat-n">∞</div><div class="stat-l">Stories Told</div></div>
+        </div>
+        <div class="tags">
+          <span class="tag">Theyyam</span>
+          <span class="tag">Documentary</span>
+          <span class="tag">Festival</span>
+          <span class="tag">Portrait</span>
+          <span class="tag">Lightroom</span>
+          <span class="tag">Night Photography</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-wrap">
+    <div class="pg-header" style="margin-bottom:44px"><h2>Services</h2><p>What I Offer</p></div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-name">Cultural & Ritual</div>
+        <div class="svc-desc">Documenting Theyyam, temple festivals, and traditional Kerala rituals with cinematic depth and artistic sensitivity.</div>
+        <div class="svc-price">Custom Quote</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-name">Festival Coverage</div>
+        <div class="svc-desc">Full-event photography of temple festivals, Pooram, and processions — capturing the grandeur and emotion of every moment.</div>
+        <div class="svc-price">Starting ₹3,000</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-name">Portrait Session</div>
+        <div class="svc-desc">Professional portrait photography for individuals, artists, and performers. Studio or outdoor, editorial or personal.</div>
+        <div class="svc-price">Starting ₹1,500</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-name">Print & License</div>
+        <div class="svc-desc">Fine art prints of selected works available for home, office, or editorial use. Licensing for media and commercial projects.</div>
+        <div class="svc-price">On Request</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="pg-header" style="margin-bottom:44px"><h2>Contact</h2><p>Let's Create Together</p></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Get in touch</h3>
+        <p>Have a project, collaboration, or just want to say hello? I'd love to hear from you. Reach out through the form or find me on Instagram.</p>
+        <div class="c-details">
+          <div class="c-item"><label>Instagram</label><span>@vipin__v1</span></div>
+          <div class="c-item"><label>Location</label><span>Kerala, India</span></div>
+          <div class="c-item"><label>Availability</label><span>Open for bookings</span></div>
+        </div>
+      </div>
+      <div class="cform">
+        <div class="fg"><label>Your Name</label><input type="text" id="c-name"></div>
+        <div class="fg"><label>Phone / Email</label><input type="text" id="c-contact"></div>
+        <div class="fg"><label>Project Type</label><input type="text" id="c-project" placeholder="Theyyam, Festival, Portrait..."></div>
+        <div class="fg"><label>Message</label><textarea id="c-msg"></textarea></div>
+        <button class="submit" onclick="sendMsg()">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="lb" id="lb" onclick="closeLb()">
+  <span class="lb-close">✕</span>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+function go(id,link){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(link)link.classList.add('active');
+  window.scrollTo(0,0);
+}
+function filterAndGo(cat){
+  go('gallery',document.querySelectorAll('nav a')[1]);
+  setTimeout(()=>{
+    const map={theyyam:1,festival:2,portrait:3};
+    filter(cat,document.querySelectorAll('.fbtn')[map[cat]]);
+  },50);
+}
+function filter(cat,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.m-item').forEach(item=>{
+    item.classList.toggle('hide',cat!=='all'&&item.dataset.cat!==cat);
+  });
+}
+function lb(item){
+  document.getElementById('lb-img').src=item.querySelector('img').src;
+  document.getElementById('lb').classList.add('open');
+}
+function closeLb(){document.getElementById('lb').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
+function sendMsg(){
+  const name=document.getElementById('c-name').value;
+  const contact=document.getElementById('c-contact').value;
+  const project=document.getElementById('c-project').value;
+  const msg=document.getElementById('c-msg').value;
+  if(!name||!contact){alert('Please fill name and contact!');return;}
+  const text=`Hi Vipin! I found your portfolio.\n\nName: ${name}\nContact: ${contact}\nProject: ${project}\nMessage: ${msg}`;
+  window.open('https://wa.me/9173568 42389?text='+encodeURIComponent(text));
+}
+</script>
+</body>
+</html>
