@@ -119,35 +119,41 @@ section.active{display:block}
 
 @media(max-width:768px){
   .sidebar{display:none}
-  .main{margin-left:0;padding-bottom:72px}
+  .main{margin-left:0;padding-bottom:72px;padding-top:52px}
 
-  /* Top mini header */
-  .mobile-header{display:flex!important;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(8,8,8,0.95);border-bottom:1px solid #181818;position:fixed;top:0;left:0;right:0;z-index:150}
-  .mobile-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#e8e0d0;white-space:nowrap}
+  /* Top fixed header */
+  .mobile-header{display:flex!important;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(8,8,8,0.97);border-bottom:1px solid #181818;position:fixed;top:0;left:0;right:0;z-index:150;height:52px}
+  .mobile-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:#e8e0d0;white-space:nowrap;line-height:1}
   .mobile-logo em{font-style:italic;color:#c9a84c}
-  .mobile-insta{font-size:9px;color:#555;letter-spacing:2px;text-transform:uppercase;border:1px solid #2a2a2a;padding:5px 10px;transition:all .3s}
-  .mobile-insta:hover{color:#c9a84c;border-color:#c9a84c}
+  .mobile-insta{font-size:8px;color:#555;letter-spacing:1.5px;text-transform:uppercase;border:1px solid #2a2a2a;padding:4px 8px;transition:all .3s;white-space:nowrap}
 
-  /* Bottom nav bar */
-  .bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:rgba(8,8,8,0.97);border-top:1px solid #1a1a1a;z-index:150;height:64px;backdrop-filter:blur(10px)}
-  .bn-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;transition:all .2s;padding:8px 0}
-  .bn-icon{width:18px;height:18px;opacity:.3;transition:all .3s}
-  .bn-label{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:#333;transition:color .3s}
+  /* Bottom nav — all 5 icons */
+  .bottom-nav{display:flex!important;position:fixed;bottom:0;left:0;right:0;background:rgba(8,8,8,0.98);border-top:1px solid #1a1a1a;z-index:150;height:60px}
+  .bn-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:6px 0}
+  .bn-icon{width:16px;height:16px;opacity:.3;transition:all .3s;flex-shrink:0}
+  .bn-label{font-size:7px;letter-spacing:1px;text-transform:uppercase;color:#333;transition:color .3s;white-space:nowrap}
   .bn-item.active .bn-icon,.bn-item:hover .bn-icon{opacity:1}
   .bn-item.active .bn-label,.bn-item:hover .bn-label{color:#c9a84c}
 
-  /* Hero — brighter, content pushed down from fixed header */
-  .hero{height:100svh;padding-top:52px}
+  /* Hero */
+  .hero{height:100svh;padding-top:0}
   .hero-bg{filter:brightness(0.65)!important}
-  .hero-grad{background:linear-gradient(to top,#080808 0%,rgba(8,8,8,0.15) 55%,transparent 100%)}
-  .hero-name{font-size:52px}
-  .hero-eyebrow{font-size:9px;margin-bottom:14px}
-  .hero-role{font-size:10px;margin-bottom:20px}
+  .hero-grad{background:linear-gradient(to top,#080808 0%,rgba(8,8,8,0.1) 55%,transparent 100%)}
+  .hero-name{font-size:54px;line-height:1;white-space:nowrap}
+  .hero-name em{display:inline}
+  .hero-eyebrow{font-size:9px;margin-bottom:12px}
+  .hero-role{font-size:10px;margin-bottom:18px}
   .hero-desc{font-size:13px;margin-bottom:28px;max-width:100%}
-  .hero-content{padding:28px 22px}
+  .hero-content{padding:24px 20px;padding-bottom:32px}
+  .hero-btn{font-size:9px;padding:10px 22px}
 
-  /* Sections */
-  .cat-section,.gallery-wrap,.about-wrap,.svc-wrap,.contact-wrap{padding:28px 16px}
+  /* Sections — add top padding to avoid header overlap */
+  .gallery-wrap,.about-wrap,.svc-wrap,.contact-wrap{padding:24px 16px}
+  .cat-section{padding:24px 16px}
+  .pg-header{margin-bottom:28px}
+  .pg-header h2{font-size:34px}
+  .filter-row{gap:14px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:14px}
+  .fbtn{white-space:nowrap;flex-shrink:0}
   .cat-grid{grid-template-columns:1fr 1fr;gap:3px}
   .cat-card:nth-child(2){margin-top:0}
   .cat-card:nth-child(3){grid-column:span 2;aspect-ratio:16/7}
@@ -155,8 +161,6 @@ section.active{display:block}
   .about-grid,.contact-grid{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr}
   .stats-row{grid-template-columns:repeat(3,1fr)}
-  .pg-header h2{font-size:36px}
-  .filter-row{gap:16px}
 }
 </style>
 </head>
