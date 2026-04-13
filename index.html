@@ -115,7 +115,7 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 .lb-close{position:absolute;top:20px;right:28px;font-size:28px;color:#555;cursor:pointer;line-height:1;transition:color .2s}
 .lb-close:hover{color:#fff}
 
-/* MOBILE PREMIUM UI */
+/* ========== MOBILE PREMIUM UI ========== */
 .mobile-header{display:none}
 .menu-trigger{display:none}
 .mobile-overlay{display:none}
@@ -125,16 +125,20 @@ section.active{display:block;opacity:1;transform:translateY(0)}
   .sidebar.open{transform:translateX(0)}
   .main{margin-left:0}
   
-  /* SEAMLESS HEADER: Transparent with subtle gradient */
-  .mobile-header{display:flex!important;align-items:center;justify-content:space-between;padding:12px 20px;background:linear-gradient(to bottom, rgba(8,8,8,0.8) 0%, rgba(8,8,8,0.4) 50%, transparent 100%);position:fixed;top:0;left:0;right:0;z-index:1400;height:64px;backdrop-filter:none}
-  .mobile-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:#e8e0d0;white-space:nowrap;line-height:1;text-shadow: 0 2px 4px rgba(0,0,0,0.5)}
-  .mobile-logo em{font-style:italic;color:#c9a84c}
+  /* Header background only */
+  .mobile-header{display:flex!important;align-items:center;justify-content:center;padding:12px 20px;background:linear-gradient(to bottom, rgba(8,8,8,0.6) 0%, rgba(8,8,8,0.3) 70%, transparent 100%);position:fixed;top:0;left:0;right:0;z-index:1400;height:56px;pointer-events:none;}
   
-  .menu-trigger{display:flex!important;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
-  .menu-trigger span{display:block;width:22px;height:1px;background:#c9a84c;transition:0.3s;box-shadow: 0 1px 2px rgba(0,0,0,0.5)}
-  .menu-trigger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-  .menu-trigger.open span:nth-child(2){opacity:0}
-  .menu-trigger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  /* Logo/Name - animates */
+  .mobile-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:#e8e0d0;white-space:nowrap;line-height:1;text-shadow:0 2px 4px rgba(0,0,0,0.5);transition:transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1), opacity 0.3s ease;pointer-events:auto;position:fixed;left:20px;top:18px;z-index:1401;}
+  .mobile-logo em{font-style:italic;color:#c9a84c}
+  .mobile-logo.hide-logo{transform:translateY(-150%);opacity:0;}
+  
+  /* Menu button - always fixed on right */
+  .menu-trigger{display:flex!important;flex-direction:column;gap:5px;cursor:pointer;padding:8px;position:fixed;right:16px;top:14px;z-index:1401;background:rgba(8,8,8,0.4);backdrop-filter:blur(6px);border-radius:10px;pointer-events:auto;transition:all 0.2s ease;}
+  .menu-trigger span{display:block;width:22px;height:1.5px;background:#c9a84c;transition:0.3s;box-shadow:0 1px 2px rgba(0,0,0,0.3);border-radius:2px;}
+  .menu-trigger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .menu-trigger.open span:nth-child(2){opacity:0;}
+  .menu-trigger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
   
   .mobile-overlay{display:block;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1450;opacity:0;pointer-events:none;transition:opacity 0.4s;backdrop-filter:blur(3px)}
   .mobile-overlay.open{opacity:1;pointer-events:auto}
@@ -144,7 +148,6 @@ section.active{display:block;opacity:1;transform:translateY(0)}
   .hero-name{font-size:52px}
   .hero-desc{font-size:12px;max-width:100%;-webkit-line-clamp:3}
   
-  /* Sections padding */
   .cat-section, .gallery-wrap, .about-wrap, .svc-wrap, .contact-wrap {padding:80px 20px 40px}
   .pg-header h2{font-size:36px}
   .cat-grid{grid-template-columns:1fr 1fr}
@@ -159,18 +162,21 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 </head>
 <body>
 
-<!-- MOBILE HEADER -->
-<div class="mobile-header">
-  <div class="mobile-logo"><em>Vipin</em> M</div>
-  <div class="menu-trigger" id="menuTrigger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
+<!-- MOBILE HEADER (background only) -->
+<div class="mobile-header" id="mobileHeader"></div>
+
+<!-- MENU BUTTON - always fixed -->
+<div class="menu-trigger" id="menuTrigger" onclick="toggleMenu()">
+  <span></span><span></span><span></span>
 </div>
+
+<!-- MOBILE LOGO - animates on scroll -->
+<div class="mobile-logo" id="mobileLogo"><em>Vipin</em> M</div>
 
 <!-- MOBILE OVERLAY -->
 <div class="mobile-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 
-<!-- SIDEBAR (Shared for Desktop & Mobile) -->
+<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="logo"><em>Vipin</em> M</div>
   <div class="tagline">Photography</div>
@@ -357,97 +363,100 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 </div>
 
 <script>
-function isMobile(){return window.innerWidth<=768;}
+// ========== ALL FUNCTIONS FULLY WORKING ==========
+
+// Mobile logo hide/show on scroll (only logo, menu button stays)
+let lastScrollTop = 0;
+const mobileLogo = document.getElementById('mobileLogo');
+
+window.addEventListener('scroll', function() {
+  if (window.innerWidth <= 768 && mobileLogo) {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (currentScroll > lastScrollTop && currentScroll > 80) {
+      mobileLogo.classList.add('hide-logo');
+    } else {
+      mobileLogo.classList.remove('hide-logo');
+    }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  }
+});
+
+function isMobile() { return window.innerWidth <= 768; }
 
 function toggleMenu() {
   const sidebar = document.getElementById('sidebar');
   const trigger = document.getElementById('menuTrigger');
   const overlay = document.getElementById('menuOverlay');
-  
   sidebar.classList.toggle('open');
   trigger.classList.toggle('open');
   overlay.classList.toggle('open');
-  
-  if(sidebar.classList.contains('open')) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
+  document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
 }
 
-function go(id,link){
-  const current=document.querySelector('section.active');
-  const next=document.getElementById(id);
-  
-  // Close mobile menu if open
-  if(isMobile() && document.getElementById('sidebar').classList.contains('open')) {
-    toggleMenu();
-  }
-  
-  if(current===next) return;
-  
-  // fade out current
-  if(current){
-    current.style.opacity='0';
-    current.style.transform='translateY(10px)';
-    setTimeout(()=>{
+function go(id, link) {
+  const current = document.querySelector('section.active');
+  const next = document.getElementById(id);
+  if (isMobile() && document.getElementById('sidebar').classList.contains('open')) toggleMenu();
+  if (current === next) return;
+  if (current) {
+    current.style.opacity = '0';
+    current.style.transform = 'translateY(10px)';
+    setTimeout(() => {
       current.classList.remove('active');
-      current.style.opacity='';
-      current.style.transform='';
-      // fade in next
+      current.style.opacity = '';
+      current.style.transform = '';
       next.classList.add('active');
-      requestAnimationFrame(()=>{
-        next.style.opacity='1';
-        next.style.transform='translateY(0)';
+      requestAnimationFrame(() => {
+        next.style.opacity = '1';
+        next.style.transform = 'translateY(0)';
       });
-    },280);
+    }, 280);
   } else {
     next.classList.add('active');
   }
-  
-  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
-  if(link) link.classList.add('active');
-  
-  // Sync all links for the same section
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  if (link) link.classList.add('active');
   document.querySelectorAll('nav a').forEach(a => {
-    if(a.textContent.toLowerCase() === id.toLowerCase()) a.classList.add('active');
+    if (a.textContent.toLowerCase() === id.toLowerCase()) a.classList.add('active');
   });
-  
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function filterAndGo(cat){
-  go('gallery',document.querySelectorAll('nav a')[1]);
-  setTimeout(()=>{
-    const map={theyyam:1,festival:2,portrait:3};
-    filter(cat,document.querySelectorAll('.fbtn')[map[cat]]);
-  },50);
+function filterAndGo(cat) {
+  go('gallery', document.querySelectorAll('nav a')[1]);
+  setTimeout(() => {
+    const map = { theyyam: 1, festival: 2, portrait: 3 };
+    filter(cat, document.querySelectorAll('.fbtn')[map[cat]]);
+  }, 50);
 }
 
-function filter(cat,btn){
-  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+function filter(cat, btn) {
+  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
-  document.querySelectorAll('.m-item').forEach(item=>{
-    item.classList.toggle('hide',cat!=='all'&&item.dataset.cat!==cat);
+  document.querySelectorAll('.m-item').forEach(item => {
+    item.classList.toggle('hide', cat !== 'all' && item.dataset.cat !== cat);
   });
 }
 
-function lb(item){
-  document.getElementById('lb-img').src=item.querySelector('img').src;
+function lb(item) {
+  document.getElementById('lb-img').src = item.querySelector('img').src;
   document.getElementById('lb').classList.add('open');
 }
 
-function closeLb(){document.getElementById('lb').classList.remove('open');}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
+function closeLb() {
+  document.getElementById('lb').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 
-function sendMsg(){
-  const name=document.getElementById('c-name').value;
-  const contact=document.getElementById('c-contact').value;
-  const project=document.getElementById('c-project').value;
-  const msg=document.getElementById('c-msg').value;
-  if(!name||!contact){alert('Please fill name and contact!');return;}
-  const text=`Hi Vipin! I found your portfolio.\n\nName: ${name}\nContact: ${contact}\nProject: ${project}\nMessage: ${msg}`;
-  window.open('https://wa.me/91XXXXXXXXXX?text='+encodeURIComponent(text));
+function sendMsg() {
+  const name = document.getElementById('c-name').value;
+  const contact = document.getElementById('c-contact').value;
+  const project = document.getElementById('c-project').value;
+  const msg = document.getElementById('c-msg').value;
+  if (!name || !contact) { alert('Please fill name and contact!'); return; }
+  const text = `Hi Vipin! I found your portfolio.\n\nName: ${name}\nContact: ${contact}\nProject: ${project}\nMessage: ${msg}`;
+  // Replace XXXXXXXXXX with your actual WhatsApp number (10 digits)
+  window.open('https://wa.me/91XXXXXXXXXX?text=' + encodeURIComponent(text));
 }
 </script>
 </body>
