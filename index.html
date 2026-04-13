@@ -9,8 +9,6 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:#080808;color:#e8e0d0;font-family:'Inter',sans-serif;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-
-/* SIDEBAR (Desktop) */
 .sidebar{width:220px;background:#0a0a0a;border-right:1px solid #181818;display:flex;flex-direction:column;padding:44px 28px;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:1000}
 .logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:2px;color:#e8e0d0;line-height:1.2;margin-bottom:5px;white-space:nowrap}
 .logo em{font-style:italic;color:#c9a84c}
@@ -22,12 +20,9 @@ nav a:hover,nav a.active{color:#e8e0d0;border-bottom-color:#c9a84c}
 .sidebar-social a{font-size:9px;color:#2a2a2a;letter-spacing:2px;text-transform:uppercase;transition:color 0.3s;display:block;margin-bottom:8px}
 .sidebar-social a:hover{color:#c9a84c}
 .copy{font-size:9px;color:#1e1e1e;margin-top:16px;letter-spacing:1px}
-
 .main{margin-left:220px;min-height:100vh}
 section{display:none;opacity:0;transform:translateY(16px);transition:opacity 0.35s ease,transform 0.35s ease}
 section.active{display:block;opacity:1;transform:translateY(0)}
-
-/* HOME */
 .hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:flex-end}
 .hero-bg{position:absolute;inset:0;background:url('theyyam8.jpg') center/cover no-repeat;filter:brightness(0.45)}
 .hero-grad{position:absolute;inset:0;background:linear-gradient(to top,#080808 0%,rgba(8,8,8,0.3) 50%,transparent 100%)}
@@ -39,9 +34,7 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 .hero-desc{font-size:13px;color:#777;line-height:1.85;max-width:380px;margin-bottom:36px}
 .hero-btn{display:inline-block;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c9a84c;border:1px solid rgba(201,168,76,0.5);padding:11px 26px;transition:all .3s;cursor:pointer}
 .hero-btn:hover{background:#c9a84c;color:#080808;border-color:#c9a84c}
-
-/* OTHER SECTIONS */
-.cat-section, .gallery-wrap, .about-wrap, .svc-wrap, .contact-wrap {padding:72px 60px}
+.cat-section,.gallery-wrap,.about-wrap,.svc-wrap,.contact-wrap{padding:72px 60px}
 .row-label{font-size:9px;color:#333;letter-spacing:4px;text-transform:uppercase;margin-bottom:36px;display:flex;align-items:center;gap:18px}
 .row-label::after{content:'';flex:1;height:1px;background:#141414}
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
@@ -52,8 +45,6 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 .cat-info{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(to top,rgba(0,0,0,.85),transparent)}
 .cat-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-style:italic}
 .cat-sub{font-size:9px;color:#888;letter-spacing:2px;text-transform:uppercase;margin-top:3px}
-
-/* GALLERY */
 .pg-header{margin-bottom:44px}
 .pg-header h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:#e8e0d0;margin-bottom:5px}
 .pg-header p{font-size:10px;color:#333;letter-spacing:3px;text-transform:uppercase}
@@ -69,8 +60,6 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 .m-item:hover .m-cap{opacity:1}
 .m-cap span{font-size:10px;color:#e8e0d0;letter-spacing:2px;text-transform:uppercase}
 .m-item.hide{display:none}
-
-/* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start}
 .about-img-wrap{position:relative}
 .about-img-wrap img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;filter:brightness(.85)}
@@ -84,16 +73,12 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 .stat-l{font-size:9px;color:#333;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:9px;color:#555;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border:1px solid #1e1e1e}
-
-/* SERVICES */
 .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:12px}
 .svc-card{background:#0a0a0a;padding:36px;border:1px solid #141414;transition:border-color .3s}
 .svc-card:hover{border-color:#242424}
 .svc-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:#e8e0d0;margin-bottom:10px;font-style:italic}
 .svc-desc{font-size:12px;color:#4a4a4a;line-height:1.75;margin-bottom:18px}
 .svc-price{font-size:10px;color:#c9a84c;letter-spacing:2px;text-transform:uppercase}
-
-/* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start;margin-top:12px}
 .contact-info h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:#e8e0d0;margin-bottom:14px}
 .contact-info p{font-size:13px;color:#555;line-height:1.85;margin-bottom:28px}
@@ -107,48 +92,37 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 .fg textarea{height:110px;resize:none}
 .submit{background:transparent;border:1px solid rgba(201,168,76,.4);color:#c9a84c;padding:12px 28px;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;align-self:flex-start}
 .submit:hover{background:#c9a84c;color:#080808;border-color:#c9a84c}
-
-/* LIGHTBOX */
 .lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:2000;align-items:center;justify-content:center}
 .lb.open{display:flex}
 .lb img{max-width:90vw;max-height:90vh;object-fit:contain}
 .lb-close{position:absolute;top:20px;right:28px;font-size:28px;color:#555;cursor:pointer;line-height:1;transition:color .2s}
 .lb-close:hover{color:#fff}
 
-/* ========== MOBILE PREMIUM UI ========== */
+/* MOBILE */
 .mobile-header{display:none}
 .menu-trigger{display:none}
 .mobile-overlay{display:none}
+.mobile-logo{display:none}
 
 @media(max-width:768px){
-  .sidebar{transform:translateX(-100%);transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);width:260px;z-index:1500}
+  .sidebar{transform:translateX(-100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);width:260px;z-index:1500}
   .sidebar.open{transform:translateX(0)}
   .main{margin-left:0}
-  
-  /* Header background only */
-  .mobile-header{display:flex!important;align-items:center;justify-content:center;padding:12px 20px;background:linear-gradient(to bottom, rgba(8,8,8,0.6) 0%, rgba(8,8,8,0.3) 70%, transparent 100%);position:fixed;top:0;left:0;right:0;z-index:1400;height:56px;pointer-events:none;}
-  
-  /* Logo/Name - animates */
-  .mobile-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:#e8e0d0;white-space:nowrap;line-height:1;text-shadow:0 2px 4px rgba(0,0,0,0.5);transition:transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1), opacity 0.3s ease;pointer-events:auto;position:fixed;left:20px;top:18px;z-index:1401;}
+  .mobile-logo{display:block;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:#e8e0d0;white-space:nowrap;text-shadow:0 2px 4px rgba(0,0,0,0.5);transition:transform 0.35s ease,opacity 0.3s ease;pointer-events:auto;position:fixed;left:20px;top:18px;z-index:1401}
   .mobile-logo em{font-style:italic;color:#c9a84c}
-  .mobile-logo.hide-logo{transform:translateY(-150%);opacity:0;}
-  
-  /* Menu button - always fixed on right */
-  .menu-trigger{display:flex!important;flex-direction:column;gap:5px;cursor:pointer;padding:8px;position:fixed;right:16px;top:14px;z-index:1401;background:rgba(8,8,8,0.4);backdrop-filter:blur(6px);border-radius:10px;pointer-events:auto;transition:all 0.2s ease;}
-  .menu-trigger span{display:block;width:22px;height:1.5px;background:#c9a84c;transition:0.3s;box-shadow:0 1px 2px rgba(0,0,0,0.3);border-radius:2px;}
-  .menu-trigger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-  .menu-trigger.open span:nth-child(2){opacity:0;}
-  .menu-trigger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-  
+  .mobile-logo.hide-logo{transform:translateY(-150%);opacity:0}
+  .menu-trigger{display:flex!important;flex-direction:column;gap:5px;cursor:pointer;padding:8px;position:fixed;right:16px;top:14px;z-index:1401;background:rgba(8,8,8,0.5);backdrop-filter:blur(6px);border-radius:10px}
+  .menu-trigger span{display:block;width:22px;height:1.5px;background:#c9a84c;transition:0.3s;border-radius:2px}
+  .menu-trigger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .menu-trigger.open span:nth-child(2){opacity:0}
+  .menu-trigger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
   .mobile-overlay{display:block;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1450;opacity:0;pointer-events:none;transition:opacity 0.4s;backdrop-filter:blur(3px)}
   .mobile-overlay.open{opacity:1;pointer-events:auto}
-  
   .hero{height:100svh}
   .hero-content{padding:20px 20px 60px}
   .hero-name{font-size:52px}
-  .hero-desc{font-size:12px;max-width:100%;-webkit-line-clamp:3}
-  
-  .cat-section, .gallery-wrap, .about-wrap, .svc-wrap, .contact-wrap {padding:80px 20px 40px}
+  .hero-desc{font-size:12px;max-width:100%}
+  .cat-section,.gallery-wrap,.about-wrap,.svc-wrap,.contact-wrap{padding:80px 20px 40px}
   .pg-header h2{font-size:36px}
   .cat-grid{grid-template-columns:1fr 1fr}
   .cat-card:nth-child(2){margin-top:0}
@@ -157,26 +131,19 @@ section.active{display:block;opacity:1;transform:translateY(0)}
   .svc-grid{grid-template-columns:1fr}
   .stats-row{grid-template-columns:repeat(3,1fr);gap:10px}
   .stat-n{font-size:28px}
+  .filter-row{gap:16px;overflow-x:auto;flex-wrap:nowrap}
+  .fbtn{white-space:nowrap;flex-shrink:0}
 }
 </style>
 </head>
 <body>
 
-<!-- MOBILE HEADER (background only) -->
-<div class="mobile-header" id="mobileHeader"></div>
-
-<!-- MENU BUTTON - always fixed -->
 <div class="menu-trigger" id="menuTrigger" onclick="toggleMenu()">
   <span></span><span></span><span></span>
 </div>
-
-<!-- MOBILE LOGO - animates on scroll -->
 <div class="mobile-logo" id="mobileLogo"><em>Vipin</em> M</div>
-
-<!-- MOBILE OVERLAY -->
 <div class="mobile-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 
-<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="logo"><em>Vipin</em> M</div>
   <div class="tagline">Photography</div>
@@ -195,7 +162,6 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 
 <main class="main">
 
-<!-- HOME -->
 <section id="home" class="active">
   <div class="hero">
     <div class="hero-bg"></div>
@@ -227,13 +193,9 @@ section.active{display:block;opacity:1;transform:translateY(0)}
   </div>
 </section>
 
-<!-- GALLERY -->
 <section id="gallery">
   <div class="gallery-wrap">
-    <div class="pg-header">
-      <h2>Gallery</h2>
-      <p>Selected Works · 2024–2026</p>
-    </div>
+    <div class="pg-header"><h2>Gallery</h2><p>Selected Works · 2024–2026</p></div>
     <div class="filter-row">
       <button class="fbtn on" onclick="filter('all',this)">All</button>
       <button class="fbtn" onclick="filter('theyyam',this)">Theyyam</button>
@@ -266,77 +228,50 @@ section.active{display:block;opacity:1;transform:translateY(0)}
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-wrap">
     <div class="pg-header" style="margin-bottom:52px"><h2>About</h2><p>The Person Behind The Lens</p></div>
     <div class="about-grid">
       <div class="about-img-wrap">
-        <img src="theyyam2.jpg" alt="Vipin V">
+        <img src="theyyam2.jpg" alt="Vipin M">
         <div class="about-img-label">Vipin M · Photographer</div>
       </div>
       <div class="about-text">
         <h2><em>Vipin</em> M</h2>
         <div class="about-role">Photographer · Kerala, India</div>
-        <div class="about-bio">
-          I am a self-taught photographer from Kerala with a deep passion for documenting the cultural soul of my homeland. My lens is drawn to the raw, the real, and the ritualistic — particularly the ancient art of Theyyam and the vibrant energy of temple festivals.<br><br>
-          Photography, for me, is not just about capturing a moment — it is about preserving a feeling, a tradition, a story that might otherwise fade into silence.
-        </div>
+        <div class="about-bio">I am a self-taught photographer from Kerala with a deep passion for documenting the cultural soul of my homeland. My lens is drawn to the raw, the real, and the ritualistic — particularly the ancient art of Theyyam and the vibrant energy of temple festivals.<br><br>Photography, for me, is not just about capturing a moment — it is about preserving a feeling, a tradition, a story that might otherwise fade into silence.</div>
         <div class="stats-row">
           <div><div class="stat-n">3+</div><div class="stat-l">Years Active</div></div>
           <div><div class="stat-n">20+</div><div class="stat-l">Projects</div></div>
           <div><div class="stat-n">∞</div><div class="stat-l">Stories Told</div></div>
         </div>
         <div class="tags">
-          <span class="tag">Theyyam</span>
-          <span class="tag">Culture</span>
-          <span class="tag">Festival</span>
-          <span class="tag">Portrait</span>
-          <span class="tag">Lightroom</span>
-          <span class="tag">Night Photography</span>
+          <span class="tag">Theyyam</span><span class="tag">Culture</span><span class="tag">Festival</span><span class="tag">Portrait</span><span class="tag">Lightroom</span><span class="tag">Night Photography</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="svc-wrap">
     <div class="pg-header" style="margin-bottom:44px"><h2>Services</h2><p>What I Offer</p></div>
     <div class="svc-grid">
-      <div class="svc-card">
-        <div class="svc-name">Cultural & Ritual</div>
-        <div class="svc-desc">Documenting Theyyam, temple festivals, and traditional Kerala rituals with cinematic depth and artistic sensitivity.</div>
-        <div class="svc-price">Custom Quote</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-name">Festival Coverage</div>
-        <div class="svc-desc">Full-event photography of temple festivals, Pooram, and processions — capturing the grandeur and emotion of every moment.</div>
-        <div class="svc-price">Starting ₹3,000</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-name">Portrait Session</div>
-        <div class="svc-desc">Professional portrait photography for individuals, artists, and performers. Studio or outdoor, editorial or personal.</div>
-        <div class="svc-price">Starting ₹1,500</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-name">Print & License</div>
-        <div class="svc-desc">Fine art prints of selected works available for home, office, or editorial use. Licensing for media and commercial projects.</div>
-        <div class="svc-price">On Request</div>
-      </div>
+      <div class="svc-card"><div class="svc-name">Cultural & Ritual</div><div class="svc-desc">Documenting Theyyam, temple festivals, and traditional Kerala rituals with cinematic depth and artistic sensitivity.</div><div class="svc-price">Custom Quote</div></div>
+      <div class="svc-card"><div class="svc-name">Festival Coverage</div><div class="svc-desc">Full-event photography of temple festivals, Pooram, and processions — capturing the grandeur and emotion of every moment.</div><div class="svc-price">Starting ₹3,000</div></div>
+      <div class="svc-card"><div class="svc-name">Portrait Session</div><div class="svc-desc">Professional portrait photography for individuals, artists, and performers. Studio or outdoor, editorial or personal.</div><div class="svc-price">Starting ₹1,500</div></div>
+      <div class="svc-card"><div class="svc-name">Print & License</div><div class="svc-desc">Fine art prints of selected works available for home, office, or editorial use. Licensing for media and commercial projects.</div><div class="svc-price">On Request</div></div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-wrap">
     <div class="pg-header" style="margin-bottom:44px"><h2>Contact</h2><p>Let's Create Together</p></div>
     <div class="contact-grid">
       <div class="contact-info">
         <h3>Get in touch</h3>
-        <p>Have a project, collaboration, or just want to say hello? I'd love to hear from you. Reach out through the form or find me on Instagram.</p>
+        <p>Have a project, collaboration, or just want to say hello? I'd love to hear from you.</p>
         <div class="c-details">
           <div class="c-item"><label>Instagram</label><span>@vipin__v1</span></div>
           <div class="c-item"><label>Location</label><span>Kerala, India</span></div>
@@ -356,108 +291,134 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 
 </main>
 
-<!-- LIGHTBOX -->
-<div class="lb" id="lb" onclick="closeLb()">
-  <span class="lb-close">✕</span>
-  <img id="lb-img" src="" alt="">
+<div class="lb" id="lb">
+  <span class="lb-close" onclick="closeLb()">✕</span>
+  <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
 </div>
 
 <script>
-// ========== ALL FUNCTIONS FULLY WORKING ==========
-
-// Mobile logo hide/show on scroll (only logo, menu button stays)
-let lastScrollTop = 0;
+// Mobile logo scroll hide
+let lastST = 0;
 const mobileLogo = document.getElementById('mobileLogo');
-
-window.addEventListener('scroll', function() {
-  if (window.innerWidth <= 768 && mobileLogo) {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if (currentScroll > lastScrollTop && currentScroll > 80) {
-      mobileLogo.classList.add('hide-logo');
-    } else {
-      mobileLogo.classList.remove('hide-logo');
-    }
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-  }
+window.addEventListener('scroll', function(){
+  if(window.innerWidth > 768) return;
+  let st = window.pageYOffset;
+  mobileLogo.classList.toggle('hide-logo', st > lastST && st > 80);
+  lastST = st <= 0 ? 0 : st;
 });
 
-function isMobile() { return window.innerWidth <= 768; }
-
-function toggleMenu() {
-  const sidebar = document.getElementById('sidebar');
-  const trigger = document.getElementById('menuTrigger');
-  const overlay = document.getElementById('menuOverlay');
-  sidebar.classList.toggle('open');
-  trigger.classList.toggle('open');
-  overlay.classList.toggle('open');
-  document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
+// Menu toggle
+function toggleMenu(){
+  const s=document.getElementById('sidebar');
+  const t=document.getElementById('menuTrigger');
+  const o=document.getElementById('menuOverlay');
+  s.classList.toggle('open');
+  t.classList.toggle('open');
+  o.classList.toggle('open');
+  document.body.style.overflow = s.classList.contains('open') ? 'hidden' : '';
 }
 
-function go(id, link) {
+// Section navigation with smooth animation
+function go(id, link){
   const current = document.querySelector('section.active');
   const next = document.getElementById(id);
-  if (isMobile() && document.getElementById('sidebar').classList.contains('open')) toggleMenu();
-  if (current === next) return;
-  if (current) {
-    current.style.opacity = '0';
-    current.style.transform = 'translateY(10px)';
-    setTimeout(() => {
+  if(window.innerWidth <= 768 && document.getElementById('sidebar').classList.contains('open')) toggleMenu();
+  if(current === next) return;
+  if(current){
+    current.style.opacity='0';
+    current.style.transform='translateY(10px)';
+    setTimeout(()=>{
       current.classList.remove('active');
-      current.style.opacity = '';
-      current.style.transform = '';
+      current.style.opacity='';
+      current.style.transform='';
       next.classList.add('active');
-      requestAnimationFrame(() => {
-        next.style.opacity = '1';
-        next.style.transform = 'translateY(0)';
+      requestAnimationFrame(()=>{
+        next.style.opacity='1';
+        next.style.transform='translateY(0)';
       });
     }, 280);
   } else {
     next.classList.add('active');
   }
-  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-  if (link) link.classList.add('active');
-  document.querySelectorAll('nav a').forEach(a => {
-    if (a.textContent.toLowerCase() === id.toLowerCase()) a.classList.add('active');
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  if(link) link.classList.add('active');
+  else document.querySelectorAll('nav a').forEach(a=>{
+    if(a.textContent.toLowerCase()===id) a.classList.add('active');
   });
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Push to browser history so back button works
+  history.pushState({section:id}, '', '#'+id);
 }
 
-function filterAndGo(cat) {
+// BACK BUTTON FIX — stays in site!
+window.addEventListener('popstate', function(e){
+  if(document.getElementById('lb').classList.contains('open')){
+    closeLb();
+    return;
+  }
+  const id = e.state ? e.state.section : 'home';
+  const next = document.getElementById(id);
+  const current = document.querySelector('section.active');
+  if(current === next) return;
+  if(current){
+    current.style.opacity='0';
+    setTimeout(()=>{
+      current.classList.remove('active');
+      current.style.opacity='';
+      next.classList.add('active');
+    }, 200);
+  } else {
+    next.classList.add('active');
+  }
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a=>{
+    if(a.textContent.toLowerCase()===id) a.classList.add('active');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+function filterAndGo(cat){
   go('gallery', document.querySelectorAll('nav a')[1]);
-  setTimeout(() => {
-    const map = { theyyam: 1, festival: 2, portrait: 3 };
+  setTimeout(()=>{
+    const map={theyyam:1,festival:2,portrait:3};
     filter(cat, document.querySelectorAll('.fbtn')[map[cat]]);
   }, 50);
 }
 
-function filter(cat, btn) {
-  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('on'));
+function filter(cat, btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
-  document.querySelectorAll('.m-item').forEach(item => {
-    item.classList.toggle('hide', cat !== 'all' && item.dataset.cat !== cat);
+  document.querySelectorAll('.m-item').forEach(item=>{
+    item.classList.toggle('hide', cat!=='all' && item.dataset.cat!==cat);
   });
 }
 
-function lb(item) {
+// Lightbox — back button closes it, not exits site
+function lb(item){
   document.getElementById('lb-img').src = item.querySelector('img').src;
   document.getElementById('lb').classList.add('open');
+  history.pushState({lightbox:true}, '', location.href);
 }
-
-function closeLb() {
+function closeLb(){
   document.getElementById('lb').classList.remove('open');
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+document.getElementById('lb').addEventListener('click', function(e){
+  if(e.target === this) closeLb();
+});
+document.addEventListener('keydown', e=>{if(e.key==='Escape') closeLb();});
 
-function sendMsg() {
-  const name = document.getElementById('c-name').value;
-  const contact = document.getElementById('c-contact').value;
-  const project = document.getElementById('c-project').value;
-  const msg = document.getElementById('c-msg').value;
-  if (!name || !contact) { alert('Please fill name and contact!'); return; }
-  const text = `Hi Vipin! I found your portfolio.\n\nName: ${name}\nContact: ${contact}\nProject: ${project}\nMessage: ${msg}`;
-  // Replace XXXXXXXXXX with your actual WhatsApp number (10 digits)
-  window.open('https://wa.me/91XXXXXXXXXX?text=' + encodeURIComponent(text));
+function sendMsg(){
+  const name=document.getElementById('c-name').value;
+  const contact=document.getElementById('c-contact').value;
+  const project=document.getElementById('c-project').value;
+  const msg=document.getElementById('c-msg').value;
+  if(!name||!contact){alert('Please fill name and contact!');return;}
+  const text=`Hi Vipin! I found your portfolio.\n\nName: ${name}\nContact: ${contact}\nProject: ${project}\nMessage: ${msg}`;
+  window.open('https://wa.me/91XXXXXXXXXX?text='+encodeURIComponent(text));
 }
+
+// Init history state
+history.replaceState({section:'home'}, '', location.href);
 </script>
 </body>
 </html>
