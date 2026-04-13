@@ -121,7 +121,7 @@ section.active{display:block;opacity:1;transform:translateY(0)}
 
 @media(max-width:768px){
   .sidebar{display:none}
-  .main{margin-left:0;padding-bottom:64px;padding-top:52px}
+  .main{margin-left:0;padding-bottom:60px;padding-top:52px}
 
   /* Top fixed header */
   .mobile-header{display:flex!important;align-items:center;justify-content:space-between;padding:12px 18px;background:rgba(8,8,8,0.97);border-bottom:1px solid #181818;position:fixed;top:0;left:0;right:0;z-index:150;height:52px}
@@ -130,16 +130,16 @@ section.active{display:block;opacity:1;transform:translateY(0)}
   .mobile-insta{font-size:8px;color:#555;letter-spacing:1.5px;text-transform:uppercase;border:1px solid #2a2a2a;padding:4px 8px;transition:all .3s;white-space:nowrap}
 
   /* Bottom nav — all 5 icons */
-  .bottom-nav{display:flex!important;position:fixed;bottom:0;left:0;right:0;background:rgba(8,8,8,0.98);border-top:1px solid #1a1a1a;z-index:150;height:56px}
-  .bn-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:6px 0}
-  .bn-icon{width:16px;height:16px;opacity:.3;transition:all .3s;flex-shrink:0}
-  .bn-label{font-size:7px;letter-spacing:1px;text-transform:uppercase;color:#333;transition:color .3s;white-space:nowrap}
+  .bottom-nav{display:flex!important;position:fixed;bottom:0;left:0;right:0;background:rgba(8,8,8,0.98);border-top:1px solid #1a1a1a;z-index:9999;height:54px;width:100%}
+  .bn-item{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;padding:4px 0}
+  .bn-icon{width:15px;height:15px;opacity:.3;transition:all .3s;flex-shrink:0}
+  .bn-label{font-size:6px;letter-spacing:0.5px;text-transform:uppercase;color:#333;transition:color .3s;white-space:nowrap}
   .bn-item.active .bn-icon,.bn-item:hover .bn-icon{opacity:1}
   .bn-item.active .bn-label,.bn-item:hover .bn-label{color:#c9a84c}
 
   /* Hero */
-  .hero{height:100svh;padding-top:0;min-height:580px}
-  .hero-content{padding:20px 20px 80px;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+  .hero{height:100svh;min-height:600px}
+  .hero-content{padding:20px 20px 90px;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
   .hero-bg{filter:brightness(0.65)!important}
   .hero-grad{background:linear-gradient(to top,#080808 15%,rgba(8,8,8,0.1) 60%,transparent 100%)}
   .hero-name{font-size:50px;line-height:1;white-space:nowrap}
